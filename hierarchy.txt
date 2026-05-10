@@ -1,0 +1,32 @@
+.
+├── blocks
+│   ├── ff_sync
+│   ├── rd_ptr
+│   └── wr_ptr
+├── hierarchy.txt
+├── README.md
+├── rtl
+│   ├── async_fifo_tb.sv
+│   ├── async_fifo_tb1.sv
+│   ├── async_fifo.sv
+│   ├── ff_sync.sv
+│   ├── rd_ptr.sv
+│   └── wr_ptr.sv
+├── scripts
+│   ├── run_async_fifo.sh
+│   ├── run_ff_sync.sh
+│   ├── run_rd_ptr.sh
+│   ├── run_wd_ptr.sh
+│   └── synth.ys
+├── sim
+│   ├── async_fifo
+│   ├── ff_sync
+│   ├── rd_ptr
+│   └── wr_ptr
+└── tb
+    ├── async_fifo_tb.sv
+    ├── ff_sync_tb.sv
+    ├── rd_ptr_tb.sv
+    └── wr_ptr_tb.sv
+
+13 directories, 17 files
