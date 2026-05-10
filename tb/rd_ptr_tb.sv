@@ -12,7 +12,7 @@ logic [ADDR_WIDTH:0] b_rd_ptr;
 logic [ADDR_WIDTH:0] gr_rd_ptr;
 
 rd_ptr #(.ADDR_WIDTH(ADDR_WIDTH)) UUT(
-    .clk(clk),
+    .rd_clk(clk),
     .rd_rst_n(rd_rst_n),
     .rd_en(rd_en),
     .empty(empty),
@@ -22,6 +22,8 @@ rd_ptr #(.ADDR_WIDTH(ADDR_WIDTH)) UUT(
 
 always #5 clk = ~clk;
 initial begin
+    $dumpfile("sim/rd_ptr/rd_ptr.vcd");
+    $dumpvars(0,rd_ptr_tb);
     clk = 0;
     rd_rst_n = 0;
     rd_en = 0;

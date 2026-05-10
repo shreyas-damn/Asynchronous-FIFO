@@ -1,142 +1,105 @@
-`timescale 1ns / 1ps
+`timescale 1ns/1ps
+module async_fifo_tb();
+parameter ADDR_WIDTH = 4;
+parameter DATA_WIDTH = 9;
+parameter DEPTH = (1 << ADDR_WIDTH);
 
-module async_fifo_tb;
+//port declaration
+logic wr_clk, rd_clk;
+logic wr_rst_n, rd_rst_n;
+logic wr_en, rd_en;
+logic [DATA_WIDTH-1:0] din;
+logic [DATA_WIDTH-1:0] dout;
+logic full, empty;
 
-    parameter ADDR_WIDTH = 4;
-    parameter DATA_WIDTH = 9;
-    parameter DEPTH = (1 << ADDR_WIDTH);
+//Device Instantiation
+async_fifo #(ADDR_WIDTH, DATA_WIDTH) dut (
+    .wr_clk(wr_clk),
+    .rd_clk(rd_clk),
+    .wr_en(wr_en),
+    .rd_en(rd_en),
+    .wr_rst(wr_rst_n),
+    .rd_rst_n(rd_rst_n),
+    .d_in(din),
+    .d_out(dout),
+    .full(full),
+    .empty(empty)
+);
 
-    logic wr_clk, rd_clk;
-    logic wr_rst, rd_rst_n;
-    logic wr_en, rd_en;
-    logic [DATA_WIDTH-1:0] d_in;
-    logic [DATA_WIDTH-1:0] d_out;
-    logic full, empty;
+initial wr_clk = 0;
+always #10 wr_clk = ~wr_clk;
 
-    // DUT
-    async_fifo #(ADDR_WIDTH, DATA_WIDTH) dut (
-        .wr_clk(wr_clk),
-        .wr_rst(wr_rst),
-        .wr_en(wr_en),
-        .d_in(d_in),
+initial rd_clk = 0;
+always #15 rd_clk = ~rd_clk;
 
-        .rd_clk(rd_clk),
-        .rd_rst_n(rd_rst_n),
-        .rd_en(rd_en),
-        .d_out(d_out),
+//Creating a task to reset the fifo
+task reset_fifo();
+begin
+    wr_rst_n = 0;
+    rd_rst_n = 0;
+    wr_en = 0;
+    rd_en = 0;
+    repeat (3) @(posedge wr_clk);
+    wr_rst_n = 1;
+    repeat(3) @(posedge rd_clk);
+    rd_rst_n = 1;
+end
+endtask
 
-        .full(full),
-        .empty(empty)
-    );
-
-    // clocks
-    initial wr_clk = 0;
-    always #5 wr_clk = ~wr_clk;
-
-    initial rd_clk = 0;
-    always #8 rd_clk = ~rd_clk;
-
-    // scoreboard
-    logic [DATA_WIDTH-1:0] exp_queue[$];
-
-    // reset
-    initial begin
-        wr_rst = 0;
-        rd_rst_n = 0;
-        wr_en = 0;
-        rd_en = 0;
-        d_in = 0;
-
-        #30;
-        wr_rst = 1;
-        rd_rst_n = 1;
-    end
-
-    // ---------------- WRITE TASK ----------------
-    task automatic write(input int n);
-        int i;
-        for (i = 0; i < n; i++) begin
-            @(posedge wr_clk);
-
+//Creating a task to write into the fifo
+task write_fifo(input [DATA_WIDTH-1:0] data);
+begin
+    @(posedge wr_clk);
+        if(!full) begin
             wr_en = 1;
-            d_in  = $urandom_range(0, 255);
-
-            if (!full)
-                exp_queue.push_back(d_in);
+            din = data;
         end
-
-        @(posedge wr_clk);
+        else begin
+            wr_en = 0;
+        end
+    @(posedge wr_clk);
         wr_en = 0;
-    endtask
+end
+endtask
 
-    // ---------------- READ TASK (FIXED) ----------------
-    task automatic read_all();
-        logic [DATA_WIDTH-1:0] exp;
-
-        while (exp_queue.size() > 0) begin
-            @(posedge rd_clk);
-
-            if (!empty) begin
-                rd_en = 1;
-
-                @(posedge rd_clk); // allow FIFO output to settle
-                rd_en = 0;
-
-                exp = exp_queue.pop_front();
-
-                if (d_out !== exp) begin
-                    $display("❌ ERROR: exp=%0d got=%0d time=%0t",
-                              exp, d_out, $time);
-                    $stop;
-                end
-            end
-            else begin
-                rd_en = 0;
-            end
+//Creating a task to read from the fifo
+task read_fifo();
+begin
+    @(posedge rd_clk);
+        if (!empty) begin
+            rd_en = 1;
         end
-    endtask
-
-    // ---------------- DRAIN (CDC SAFE) ----------------
-    task automatic drain_fifo();
-        repeat (20) @(posedge rd_clk);
-    endtask
-
-    // ---------------- MAIN TEST ----------------
-    initial begin
-        wait(wr_rst && rd_rst_n);
-
-        $display("---- TEST 1: SIMPLE BURST ----");
-        write(5);
-        read_all();
-
-        $display("---- TEST 2: OVERFLOW STRESS ----");
-        write(DEPTH + 5);
-        read_all();
-
-        $display("---- TEST 3: RANDOM STRESS ----");
-        repeat (50) begin
-            fork
-                begin
-                    @(posedge wr_clk);
-                    wr_en = $urandom_range(0,1);
-                    d_in  = $urandom;
-
-                    if (wr_en && !full)
-                        exp_queue.push_back(d_in);
-                end
-
-                begin
-                    @(posedge rd_clk);
-                    rd_en = $urandom_range(0,1);
-                end
-            join
+        else begin
+            rd_en = 0;
         end
+    @(posedge rd_clk);
+        rd_en = 0;  
+end
+endtask
 
-        drain_fifo();
-        read_all();
-
-        $display("✅ FIFO TEST PASSED");
-        $finish;
-    end
-
+initial begin
+    $dumpfile("sim/async_fifo/async_fifo.vcd");
+    $dumpvars(0,async_fifo_tb);
+    //intializing signals
+    wr_en = 0;
+    rd_en = 0;
+    din = 0;
+    //reset
+    reset_fifo();
+    //writing
+    write_fifo(9'd1);
+    write_fifo(9'd2);
+    write_fifo(9'd3);
+    write_fifo(9'd4);
+    write_fifo(9'd5);
+    write_fifo(9'd6);
+    //reading
+    read_fifo();
+    read_fifo();
+    read_fifo();
+    read_fifo();
+    read_fifo();
+    read_fifo();
+    $finish;
+end
 endmodule

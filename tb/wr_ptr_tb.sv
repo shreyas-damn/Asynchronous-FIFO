@@ -21,6 +21,8 @@ wr_ptr #(.ADDR_WIDTH(ADDR_WIDTH)) dut (
 always #5 wr_clk = ~wr_clk;
 
 initial begin
+    $dumpfile("sim/wr_ptr/wr_ptr.vcd");
+    $dumpvars(0,wr_ptr_tb);
     wr_clk = 0;
     wr_rst = 0;
     wr_en  = 0;
