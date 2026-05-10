@@ -1,0 +1,2 @@
+VCD info: dumpfile sim/ff_sync/output.vcd opened for output.
+tb/ff_sync_tb.sv:32: $finish called at 140000 (1ps)

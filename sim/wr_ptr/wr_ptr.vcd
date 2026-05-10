@@ -1,0 +1,143 @@
+$date
+	Thu May  7 10:52:13 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module wr_ptr_tb $end
+$var wire 4 ! gr_wr_ptr [3:0] $end
+$var wire 4 " b_wr_ptr [3:0] $end
+$var parameter 32 # ADDR_WIDTH $end
+$var reg 1 $ full $end
+$var reg 1 % wr_clk $end
+$var reg 1 & wr_en $end
+$var reg 1 ' wr_rst $end
+$scope module dut $end
+$var wire 1 $ full $end
+$var wire 5 ( gr_wr_ptr [4:0] $end
+$var wire 1 % wr_clk $end
+$var wire 1 & wr_en $end
+$var wire 1 ' wr_rst $end
+$var parameter 32 ) ADDR_WIDTH $end
+$var reg 5 * b_wr_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100 )
+b100 #
+$end
+#0
+$dumpvars
+b0 *
+b0 (
+0'
+0&
+0%
+0$
+b0 "
+b0 !
+$end
+#5000
+1%
+#10000
+0%
+#12000
+1&
+1'
+#15000
+b1 !
+b1 (
+b1 "
+b1 *
+1%
+#20000
+0%
+#25000
+b11 !
+b11 (
+b10 "
+b10 *
+1%
+#30000
+0%
+#35000
+b10 !
+b10 (
+b11 "
+b11 *
+1%
+#40000
+0%
+#45000
+b110 !
+b110 (
+b100 "
+b100 *
+1%
+#50000
+0%
+#55000
+b111 !
+b111 (
+b101 "
+b101 *
+1%
+#60000
+0%
+#62000
+0&
+#65000
+1%
+#70000
+0%
+#75000
+1%
+#80000
+0%
+#82000
+1&
+1$
+#85000
+1%
+#90000
+0%
+#95000
+1%
+#100000
+0%
+#105000
+1%
+#110000
+0%
+#112000
+0$
+#115000
+b101 !
+b101 (
+b110 "
+b110 *
+1%
+#120000
+0%
+#125000
+b100 !
+b100 (
+b111 "
+b111 *
+1%
+#130000
+0%
+#135000
+b1100 !
+b1100 (
+b1000 "
+b1000 *
+1%
+#140000
+0%
+#142000

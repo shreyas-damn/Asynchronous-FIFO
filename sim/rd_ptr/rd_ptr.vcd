@@ -1,0 +1,156 @@
+$date
+	Thu May  7 11:54:50 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module rd_ptr_tb $end
+$var wire 5 ! gr_rd_ptr [4:0] $end
+$var wire 5 " b_rd_ptr [4:0] $end
+$var parameter 32 # ADDR_WIDTH $end
+$var reg 1 $ clk $end
+$var reg 1 % empty $end
+$var reg 1 & rd_en $end
+$var reg 1 ' rd_rst_n $end
+$scope module UUT $end
+$var wire 1 % empty $end
+$var wire 5 ( gr_rd_ptr [4:0] $end
+$var wire 1 $ rd_clk $end
+$var wire 1 & rd_en $end
+$var wire 1 ' rd_rst_n $end
+$var parameter 32 ) ADDR_WIDTH $end
+$var reg 5 * b_rd_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100 )
+b100 #
+$end
+#0
+$dumpvars
+b0 *
+b0 (
+0'
+0&
+1%
+0$
+b0 "
+b0 !
+$end
+#5000
+1$
+#10000
+0$
+#12000
+1'
+#15000
+1$
+#20000
+0$
+#22000
+1&
+#25000
+1$
+#30000
+0$
+#35000
+1$
+#40000
+0$
+#42000
+0%
+#45000
+b1 !
+b1 (
+b1 "
+b1 *
+1$
+#50000
+0$
+#55000
+b11 !
+b11 (
+b10 "
+b10 *
+1$
+#60000
+0$
+#65000
+b10 !
+b10 (
+b11 "
+b11 *
+1$
+#70000
+0$
+#75000
+b110 !
+b110 (
+b100 "
+b100 *
+1$
+#80000
+0$
+#85000
+b111 !
+b111 (
+b101 "
+b101 *
+1$
+#90000
+0$
+#95000
+b101 !
+b101 (
+b110 "
+b110 *
+1$
+#100000
+0$
+#105000
+b100 !
+b100 (
+b111 "
+b111 *
+1$
+#110000
+0$
+#115000
+b1100 !
+b1100 (
+b1000 "
+b1000 *
+1$
+#120000
+0$
+#125000
+b1101 !
+b1101 (
+b1001 "
+b1001 *
+1$
+#130000
+0$
+#135000
+b1111 !
+b1111 (
+b1010 "
+b1010 *
+1$
+#140000
+0$
+#145000
+b1110 !
+b1110 (
+b1011 "
+b1011 *
+1$
+#150000
+0$
+#152000
+0&

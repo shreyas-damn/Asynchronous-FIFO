@@ -1,0 +1,582 @@
+$date
+	Fri May  8 19:14:11 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module async_fifo_tb $end
+$var wire 1 ! full $end
+$var wire 1 " empty $end
+$var wire 9 # dout [8:0] $end
+$var parameter 32 $ ADDR_WIDTH $end
+$var parameter 32 % DATA_WIDTH $end
+$var parameter 36 & DEPTH $end
+$var reg 9 ' din [8:0] $end
+$var reg 1 ( rd_clk $end
+$var reg 1 ) rd_en $end
+$var reg 1 * rd_rst_n $end
+$var reg 1 + wr_clk $end
+$var reg 1 , wr_en $end
+$var reg 1 - wr_rst_n $end
+$scope module dut $end
+$var wire 9 . d_in [8:0] $end
+$var wire 1 ! full $end
+$var wire 1 ( rd_clk $end
+$var wire 1 ) rd_en $end
+$var wire 1 * rd_rst_n $end
+$var wire 1 + wr_clk $end
+$var wire 1 , wr_en $end
+$var wire 1 - wr_rst $end
+$var wire 5 / wr_g_ptr_sync2 [4:0] $end
+$var wire 5 0 wr_g_ptr_sync1 [4:0] $end
+$var wire 5 1 wr_g_ptr [4:0] $end
+$var wire 5 2 wr_b_ptr [4:0] $end
+$var wire 4 3 wr_addr [3:0] $end
+$var wire 5 4 rd_g_ptr_sync2 [4:0] $end
+$var wire 5 5 rd_g_ptr_sync1 [4:0] $end
+$var wire 5 6 rd_g_ptr [4:0] $end
+$var wire 5 7 rd_b_ptr [4:0] $end
+$var wire 4 8 rd_addr [3:0] $end
+$var wire 1 " empty $end
+$var parameter 32 9 ADDR_WIDTH $end
+$var parameter 32 : DATA_WIDTH $end
+$var reg 9 ; d_out [8:0] $end
+$scope module rd_block $end
+$var wire 1 " empty $end
+$var wire 5 < gr_rd_ptr [4:0] $end
+$var wire 1 ( rd_clk $end
+$var wire 1 ) rd_en $end
+$var wire 1 * rd_rst_n $end
+$var parameter 32 = ADDR_WIDTH $end
+$var reg 5 > b_rd_ptr [4:0] $end
+$upscope $end
+$scope module sync1 $end
+$var wire 1 ( clk $end
+$var wire 1 * rst_n $end
+$var wire 5 ? din [4:0] $end
+$var parameter 33 @ WIDTH $end
+$var reg 5 A dout [4:0] $end
+$var reg 5 B q1 [4:0] $end
+$upscope $end
+$scope module sync2 $end
+$var wire 1 ( clk $end
+$var wire 5 C din [4:0] $end
+$var wire 1 * rst_n $end
+$var parameter 33 D WIDTH $end
+$var reg 5 E dout [4:0] $end
+$var reg 5 F q1 [4:0] $end
+$upscope $end
+$scope module sync3 $end
+$var wire 1 + clk $end
+$var wire 5 G din [4:0] $end
+$var wire 1 - rst_n $end
+$var parameter 33 H WIDTH $end
+$var reg 5 I dout [4:0] $end
+$var reg 5 J q1 [4:0] $end
+$upscope $end
+$scope module sync4 $end
+$var wire 1 + clk $end
+$var wire 5 K din [4:0] $end
+$var wire 1 - rst_n $end
+$var parameter 33 L WIDTH $end
+$var reg 5 M dout [4:0] $end
+$var reg 5 N q1 [4:0] $end
+$upscope $end
+$scope module wr_block $end
+$var wire 1 ! full $end
+$var wire 5 O gr_wr_ptr [4:0] $end
+$var wire 1 + wr_clk $end
+$var wire 1 , wr_en $end
+$var wire 1 - wr_rst $end
+$var parameter 32 P ADDR_WIDTH $end
+$var reg 5 Q b_wr_ptr [4:0] $end
+$upscope $end
+$upscope $end
+$scope task read_fifo $end
+$upscope $end
+$scope task reset_fifo $end
+$upscope $end
+$scope task write_fifo $end
+$var reg 9 R data [8:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100 P
+b101 L
+b101 H
+b101 D
+b101 @
+b100 =
+b1001 :
+b100 9
+b10000 &
+b1001 %
+b100 $
+$end
+#0
+$dumpvars
+bx R
+b0 Q
+b0 O
+b0 N
+b0 M
+b0 K
+b0 J
+b0 I
+b0 G
+b0 F
+b0 E
+b0 C
+b0 B
+b0 A
+b0 ?
+b0 >
+b0 <
+bx ;
+b0 8
+b0 7
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b0 0
+b0 /
+b0 .
+0-
+0,
+0+
+0*
+0)
+0(
+b0 '
+bx #
+1"
+0!
+$end
+#10000
+1+
+#15000
+1(
+#20000
+0+
+#30000
+1+
+0(
+#40000
+0+
+#45000
+1(
+#50000
+1-
+1+
+#60000
+0+
+0(
+#70000
+1+
+#75000
+1(
+#80000
+0+
+#90000
+1+
+0(
+#100000
+0+
+#105000
+1(
+#110000
+1+
+#120000
+0+
+0(
+#130000
+1+
+#135000
+b1 R
+1*
+1(
+#140000
+0+
+#150000
+b1 1
+b1 ?
+b1 O
+b1 3
+b1 2
+b1 Q
+b1 '
+b1 .
+1,
+1+
+0(
+#160000
+0+
+#165000
+b1 B
+1(
+#170000
+b10 R
+0,
+1+
+#180000
+0+
+0(
+#190000
+b11 1
+b11 ?
+b11 O
+b10 3
+b10 2
+b10 Q
+b10 '
+b10 .
+1,
+1+
+#195000
+b1 0
+b1 A
+b1 C
+b11 B
+1(
+#200000
+0+
+#210000
+b11 R
+0,
+1+
+0(
+#220000
+0+
+#225000
+b11 0
+b11 A
+b11 C
+b1 F
+1(
+#230000
+b10 1
+b10 ?
+b10 O
+b11 3
+b11 2
+b11 Q
+b11 '
+b11 .
+1,
+1+
+#240000
+0+
+0(
+#250000
+b100 R
+0,
+1+
+#255000
+0"
+b1 /
+b1 E
+b11 F
+b10 B
+1(
+#260000
+0+
+#270000
+b110 1
+b110 ?
+b110 O
+b100 3
+b100 2
+b100 Q
+b100 '
+b100 .
+1,
+1+
+0(
+#280000
+0+
+#285000
+b110 B
+b10 0
+b10 A
+b10 C
+b11 /
+b11 E
+1(
+#290000
+b101 R
+0,
+1+
+#300000
+0+
+0(
+#310000
+b111 1
+b111 ?
+b111 O
+b101 3
+b101 2
+b101 Q
+b101 '
+b101 .
+1,
+1+
+#315000
+b10 F
+b110 0
+b110 A
+b110 C
+b111 B
+1(
+#320000
+0+
+#330000
+b110 R
+0,
+1+
+0(
+#340000
+0+
+#345000
+b111 0
+b111 A
+b111 C
+b110 F
+b10 /
+b10 E
+1(
+#350000
+b101 1
+b101 ?
+b101 O
+b110 3
+b110 2
+b110 Q
+b110 '
+b110 .
+1,
+1+
+#360000
+0+
+0(
+#370000
+0,
+1+
+#375000
+b1 6
+b1 <
+b1 G
+b1 8
+b110 /
+b110 E
+b111 F
+b101 B
+b1 7
+b1 >
+b1 #
+b1 ;
+1)
+1(
+#380000
+0+
+#390000
+b1 J
+1+
+0(
+#400000
+0+
+#405000
+b101 0
+b101 A
+b101 C
+b111 /
+b111 E
+b10 #
+b10 ;
+0)
+1(
+#410000
+b1 5
+b1 I
+b1 K
+1+
+#420000
+0+
+0(
+#430000
+b1 N
+1+
+#435000
+b11 6
+b11 <
+b11 G
+b10 8
+b101 F
+b10 7
+b10 >
+1)
+1(
+#440000
+0+
+#450000
+b1 4
+b1 M
+b11 J
+1+
+0(
+#460000
+0+
+#465000
+b101 /
+b101 E
+b11 #
+b11 ;
+0)
+1(
+#470000
+b11 5
+b11 I
+b11 K
+1+
+#480000
+0+
+0(
+#490000
+b11 N
+1+
+#495000
+b10 6
+b10 <
+b10 G
+b11 8
+b11 7
+b11 >
+1)
+1(
+#500000
+0+
+#510000
+b10 J
+b11 4
+b11 M
+1+
+0(
+#520000
+0+
+#525000
+b100 #
+b100 ;
+0)
+1(
+#530000
+b10 5
+b10 I
+b10 K
+1+
+#540000
+0+
+0(
+#550000
+b10 N
+1+
+#555000
+0"
+b110 6
+b110 <
+b110 G
+b100 8
+b100 7
+b100 >
+1)
+1(
+#560000
+0+
+#570000
+b10 4
+b10 M
+b110 J
+1+
+0(
+#580000
+0+
+#585000
+b101 #
+b101 ;
+0)
+1(
+#590000
+b110 5
+b110 I
+b110 K
+1+
+#600000
+0+
+0(
+#610000
+b110 N
+1+
+#615000
+b111 6
+b111 <
+b111 G
+b101 8
+b101 7
+b101 >
+1)
+1(
+#620000
+0+
+#630000
+b111 J
+b110 4
+b110 M
+1+
+0(
+#640000
+0+
+#645000
+b110 #
+b110 ;
+0)
+1(
+#650000
+b111 5
+b111 I
+b111 K
+1+
+#660000
+0+
+0(
+#670000
+b111 N
+1+
+#675000
+1"
+b101 6
+b101 <
+b101 G
+b110 8
+b110 7
+b110 >
+1)
+1(
+#680000
+0+
+#690000
+b111 4
+b111 M
+b101 J
+1+
+0(
+#700000
+0+
+#705000
+0)
+1(

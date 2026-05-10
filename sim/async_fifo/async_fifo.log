@@ -1,0 +1,2 @@
+VCD info: dumpfile sim/async_fifo/async_fifo.vcd opened for output.
+tb/async_fifo_tb.sv:103: $finish called at 705000 (1ps)

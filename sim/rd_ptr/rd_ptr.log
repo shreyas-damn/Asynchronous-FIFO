@@ -1,0 +1,2 @@
+VCD info: dumpfile sim/rd_ptr/rd_ptr.vcd opened for output.
+tb/rd_ptr_tb.sv:40: $finish called at 152000 (1ps)
