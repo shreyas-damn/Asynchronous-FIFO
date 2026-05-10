@@ -1,0 +1,13 @@
+read_verilog -sv rtl/async_fifo.sv
+read_verilog -sv rtl/ff_sync.sv
+read_verilog -sv rtl/rd_ptr.sv
+read_verilog -sv rtl/wr_ptr.sv
+hierarchy -top async_fifo
+proc;
+opt;
+memory;
+opt;
+techmap;
+opt;
+write_json sim/async_fifo/fifo.json
+write_verilog sim/async_fifo/fifo_synth.v
